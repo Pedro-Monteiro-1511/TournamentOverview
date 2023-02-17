@@ -1,0 +1,114 @@
+<!-- base.html -->
+<html>
+  <head>
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        /* Reset styles */
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+        
+        /* Global styles */
+        body {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 16px;
+          line-height: 1.5;
+          color: #333;
+        }
+        
+        /* Header styles */
+        header {
+          background-color: #1e4166;
+          color: #fff;
+          padding: 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        header h1 {
+          font-size: 3rem;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+        
+        header nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        header nav a {
+          color: #fff;
+          font-weight: 600;
+          margin-left: 2rem;
+          text-decoration: none;
+        }
+        
+        /* Main styles */
+        main {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          padding: 2rem;
+        }
+        
+        main h2 {
+          font-size: 2.5rem;
+          font-weight: 600;
+          margin-bottom: 2rem;
+          text-align: center;
+          text-transform: uppercase;
+        }
+        
+        main p {
+          font-size: 1.5rem;
+          font-weight: 400;
+          margin-bottom: 2rem;
+          text-align: center;
+        }
+        
+        main a {
+          background-color: #fff;
+          color: #000;
+          padding: 1rem 2rem;
+          border-radius: 2rem;
+          text-decoration: none;
+          font-weight: 600;
+          text-transform: uppercase;
+          transition: background-color 0.2s ease;
+        }
+        
+        main a:hover {
+          background-color: #1e4166;
+          border-radius: 2rem;
+          color: #fff;
+        }
+      </style>
+  </head>
+  <body>
+    <div class="topbar">
+        <header>
+            <h1>Tournaments Overview</h1>
+            <nav>
+              <a href="#">Home</a>
+              <a href="{% url 'tournaments' %}">Tournaments</a>
+              <a href="{% url 'teams' %}">Teams</a>
+              <a href="{% url 'about' %}">About</a>
+              <a href="#">Contact</a>
+              <a href="#">Login</a>
+              <a href="#">Register</a>
+            </nav>
+          </header>
+    </div>
+    <div class="content">
+      {% block content %}
+      
+      {% endblock %}
+    </div>
+  </body>
+</html>

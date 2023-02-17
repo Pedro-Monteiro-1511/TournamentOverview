@@ -1,0 +1,74 @@
+{% extends 'tournament/base.html' %}
+
+{% block content %}
+
+<style>
+    .tournament-card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+        transition: all 0.2s ease;
+        text-align: center;
+      }
+    
+      .tournament-card:hover {
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+      }
+    
+      .tournament-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+    
+      .tournament-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+    
+      .tournament-card p {
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+    
+      .tournament-card a {
+        background-color: #1e4166;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 2rem;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: background-color 0.2s ease;
+        display: inline-block;
+        text-align: center;
+      }
+    
+      .tournament-card a:hover {
+        background-color: #fff;
+        border-radius: 2rem;
+        color: #1e4166;
+      }
+</style>
+
+<div class="tournament-list">
+    {% for tournament in tournaments %}
+      <div class="tournament-card">
+        <h3 class="text-center">{{ tournament.name }}</h3>
+        <p>Prize Pool: {{ tournament.prize_pool }}</p>
+        <a href="{% url 'details_tournament' tournament.id %}" class="text-center">Learn More</a>
+      </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

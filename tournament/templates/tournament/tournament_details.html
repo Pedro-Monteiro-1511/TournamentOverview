@@ -1,0 +1,96 @@
+{% extends 'tournament/base.html' %}
+
+{% block content %}
+  <h1 style="text-align: center; color: #1e4166; margin-top:20px;">Matches for {{tournament.name}}</h1>
+
+  <div class="match-list">
+    {% if tournament.type == 'Individual' %}
+    
+    {% for match in matches %}
+    <div class="match-card">
+      <h3>{{ match.player1 }} vs {{ match.player2 }}</h3>
+      <h4>{{ match.match_date|date:"F, d"|title }} at {{ match.match_date|time:"g:i A" }}</h4>
+      <a href="#">View Match Details</a>
+    </div>
+
+  {% endfor %}
+
+  {% else %}
+
+  {% for match in matches %}
+
+  <div class="match-card">
+    <h3>{{ match.team1 }} vs {{ match.team2 }}</h3>
+    <a href="#">View Match Details</a>
+  </div>
+
+  {% endfor %}
+
+ {% endif %}
+   
+  </div>
+
+  
+  <style>
+    .match-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem auto;
+      max-width: 80%; /* set a maximum width if desired */
+    }
+
+    .match-card {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin: 2rem;
+      width: 400px;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .match-card:hover {
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .match-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .match-card p {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .match-card a {
+      background-color: #1e4166;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease;
+      display: inline-block;
+      font-size: 0.8rem;
+    }
+
+    .match-card a:hover {
+      background-color: #fff;
+      border-radius: 2rem;
+      color: #1e4166;
+    }
+    .match-list .row:not(:last-child) {
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+{% endblock %}
